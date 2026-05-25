@@ -7,31 +7,25 @@
  */
 
 class Solution {
+
     public boolean canReach(String s, int minJump, int maxJump) {
-        int start = 0, end = 0, len = s.length();
-        if(len == 0 || s.charAt(0) == '1' || s.charAt(len-1) == '1') {
-            return false;
+        int n = s.length();
+        int[] f = new int[n];
+        int[] pre = new int[n];
+        f[0] = 1;
+        // since we start dynamic programming from i=minJump, we need to precompute the prefix sums for the part [0, minJump)
+        for (int i = 0; i < minJump; i++) {
+            pre[i] = 1;
         }
-        boolean[] dp = new boolean[len];
-        dp[0] = true;
-
-        for(int i = 0; i < len; i++) {
-            if(!dp[i]) {
-                continue;
+        for (int i = minJump; i < n; i++) {
+            int left = i - maxJump;
+            int right = i - minJump;
+            if (s.charAt(i) == '0') {
+                int total = pre[right] - (left <= 0 ? 0 : pre[left - 1]);
+                f[i] = total != 0 ? 1 : 0;
             }
-
-            start = Math.max(end + 1, i + minJump);
-            end = Math.min(len-1, i + maxJump);
-
-            for(int j = start; j <= end; j++) {
-                if(s.charAt(j) == '0') {
-                    dp[j] = true;
-                }
-            }
-            if(dp[len-1]) {
-                return true;
-            }
+            pre[i] = pre[i - 1] + f[i];
         }
-        return dp[len-1];
+        return f[n - 1] == 1;
     }
 }
