@@ -8,8 +8,8 @@
 
 class Solution {
     public int minimumCost(int[] cost) {
-        if(cost.length==1)
-            return cost[0];
+        // if(cost.length==1)
+        //     return cost[0];
 
         Arrays.sort(cost);
         int res = 0;
