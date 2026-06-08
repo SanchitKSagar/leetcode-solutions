@@ -9,18 +9,21 @@
 class Solution {
     public int[] pivotArray(int[] nums, int pivot) {
         int[] res = new int[nums.length];
-        Arrays.fill(res, pivot);
+        //Arrays.fill(res, pivot);
         int idx = 0;
         for(int num:nums){
             if(num < pivot)
                 res[idx++] = num;
         }
 
-        idx = res.length-1;
+        int idx2 = res.length-1;
         for(int i=nums.length-1;i>=0;i--){
             if(nums[i] > pivot)
-                res[idx--] = nums[i];
+                res[idx2--] = nums[i];
         }
+
+        for(int i=idx;i<=idx2;i++)
+            res[i] = pivot;
         return res;
     }
 }
