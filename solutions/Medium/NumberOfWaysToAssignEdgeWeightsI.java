@@ -14,13 +14,10 @@ class Solution {
             map.computeIfAbsent(edge[0], k -> new ArrayList<>()).add(edge[1]);
             map.computeIfAbsent(edge[1], k -> new ArrayList<>()).add(edge[0]);
         }
-        int depth = getMaxDepth(map, 1, new HashSet<Integer>());
-        //System.out.println(depth);
-        depth = depth-1;
+        int depth = getMaxDepth(map, 1, new HashSet<Integer>())-1;
         int res = 1;
-        while(depth != 1){
+        while(depth-- != 1){
             res = (res * 2) % MOD;
-            depth -- ;
         }
         return res;
     }
