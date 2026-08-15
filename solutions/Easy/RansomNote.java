@@ -8,6 +8,11 @@
 
 class Solution {
     public boolean canConstruct(String ransomNote, String magazine) {
+        if(ransomNote == null || magazine == null)
+            return false;
+        if(ransomNote.length() == 0)
+            return true;
+        
         int[] magArr = new int[26];
         int[] ransomArr = new int[26];
         for(char c:magazine.toCharArray()){
