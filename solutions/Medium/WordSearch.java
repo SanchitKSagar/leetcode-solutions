@@ -11,10 +11,10 @@ class Solution {
 	        
 	        for(int i=0;i<board.length;i++){
 	            for(int j=0;j<board[i].length;j++){
-	                //if(board[i][j] == word.charAt(0)){
+	                if(board[i][j] == word.charAt(0)){
 	                    if(dfs(board, i, j, 0, word, "", new boolean[board.length][board[0].length]))
 	                        return true;
-	                //}
+	                }
 	            }
 	        }
 	        return false;
