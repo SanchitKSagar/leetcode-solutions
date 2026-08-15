@@ -13,16 +13,14 @@ class Solution {
             allPlayers.add(match[0]);
             allPlayers.add(match[1]);
         }
-
-
         Map<Integer, Integer> losses = new HashMap<>();
         for(int[] match:matches){
             allPlayers.remove(match[1]);
             losses.put(match[1], losses.getOrDefault(match[1], 0)+1);
         }
         List<List<Integer>> res = new ArrayList<>();
-        System.out.println(allPlayers);
-        System.out.println(losses);
+        // System.out.println(allPlayers);
+        // System.out.println(losses);
         List<Integer> lossesZero = new ArrayList<>();
         List<Integer> lossesOnce = new ArrayList<>();
         for(int all:allPlayers)
