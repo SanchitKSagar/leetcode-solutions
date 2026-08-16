@@ -2,7 +2,7 @@
  * LeetCode #79 - Word Search
  * Difficulty : Medium
  * Topics     : Array, String, Backtracking, Depth-First Search, Matrix
- * Date       : 2026-08-15
+ * Date       : 2026-08-16
  * URL        : https://leetcode.com/problems/word-search/
  */
 
@@ -27,8 +27,6 @@ class Solution {
 	            return false;
 	        if(visited[i][j])
 	            return false;
-	        if(res.equals(word))
-	            return true;
 
 	        if(word.charAt(idx) != board[i][j])
 	            return false;
