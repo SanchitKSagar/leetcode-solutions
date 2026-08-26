@@ -19,9 +19,7 @@ class Solution {
             if(count == k){
                 list.add(s.substring(i,j+1));
             }
-            if(count <= k){
-            }
-            else{
+            if(count > k){
                 while(i<j && count >= k){
                     if(s.charAt(i) == '1')
                         count--;
