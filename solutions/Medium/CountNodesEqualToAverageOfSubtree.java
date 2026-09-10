@@ -26,7 +26,6 @@ class Solution {
     public int averageOfSubtree(TreeNode root) {
         if(root == null)
             return 0;
-        // int val = root.val;
         average(root);
         return res;
     }
@@ -41,7 +40,7 @@ class Solution {
         int nodeCount = left[0] + right[0] + 1;
         int sum = left[1] + right[1] + root.val;
 
-        if((int)Math.round(sum/nodeCount) == root.val)
+        if(Math.round(sum/nodeCount) == root.val)
             res ++;
         return new int[] {nodeCount, sum};
     }
