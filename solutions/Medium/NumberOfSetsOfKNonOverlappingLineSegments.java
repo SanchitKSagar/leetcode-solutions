@@ -1,0 +1,31 @@
+/**
+ * LeetCode #1725 - Number of Sets of K Non-Overlapping Line Segments
+ * Difficulty : Medium
+ * Topics     : Math, Dynamic Programming, Combinatorics, Prefix Sum
+ * Date       : 2026-09-16
+ * URL        : https://leetcode.com/problems/number-of-sets-of-k-non-overlapping-line-segments/
+ */
+
+class Solution {
+
+    private static final int MOD = 1000000007;
+
+    public int numberOfSets(int n, int k) {
+        int[] dp = new int[n];
+        int[] prefixSums = new int[n + 1];
+        for (int j = 0; j < n; j++) {
+            dp[j] = 1;
+            prefixSums[j + 1] = (prefixSums[j] + dp[j]) % MOD;
+        }
+        for (int i = 1; i <= k; i++) {
+            dp[0] = 0;
+            for (int j = 1; j < n; j++) {
+                dp[j] = (dp[j - 1] + prefixSums[j]) % MOD;
+            }
+            for (int j = 0; j < n; j++) {
+                prefixSums[j + 1] = (prefixSums[j] + dp[j]) % MOD;
+            }
+        }
+        return dp[n - 1];
+    }
+}
